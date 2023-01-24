@@ -4,7 +4,7 @@ function Content(props) {
     const listaDias = ["Lunes", "Miercoles" ,"Viernes"]
 
     if (props.sePintaNombre == true) {
-        return <div>
+        return <div className="container">
             <p>Hola { props.nombre }</p>
             <ListaDiasSemana 
                 lista={ listaDias }

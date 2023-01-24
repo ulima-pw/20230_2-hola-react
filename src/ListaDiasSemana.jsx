@@ -3,10 +3,13 @@ function ListaDiasSemana(props) {
     if (props.modo === "lista") {
         return <div>
             <h3>Dias Semana</h3>
-            <ul>
+            <ul className="list-group">
                 {
                     props.lista.map(function(dia) {
-                        return <li>{ dia }</li>
+                        return <li key={ dia }
+                                    className="list-group-item">
+                                    { dia }
+                                </li>
                     })
                 }
             </ul>
@@ -14,7 +17,7 @@ function ListaDiasSemana(props) {
     }else if (props.modo === "tabla") {
         return <div>
             <h3>Dias Semana</h3>
-            <table>
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th>Dia</th>
@@ -23,7 +26,7 @@ function ListaDiasSemana(props) {
                 <tbody>
                     {
                         props.lista.map(function(dia) {
-                            return <tr>
+                            return <tr key={ dia }>
                                 <td>{ dia }</td>
                             </tr>
                         })
