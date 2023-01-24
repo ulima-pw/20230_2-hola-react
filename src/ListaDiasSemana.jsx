@@ -1,6 +1,6 @@
 // Componente React
 function ListaDiasSemana(props) {
-    if (modo === "lista") {
+    if (props.modo === "lista") {
         return <div>
             <h3>Dias Semana</h3>
             <ul>
@@ -11,7 +11,7 @@ function ListaDiasSemana(props) {
                 }
             </ul>
         </div>
-    }else if (modo === "tabla") {
+    }else if (props.modo === "tabla") {
         return <div>
             <h3>Dias Semana</h3>
             <table>
@@ -31,6 +31,10 @@ function ListaDiasSemana(props) {
                     
                 </tbody>
             </table>
+        </div>
+    } else {
+        return <div>
+            Modo incorrecto
         </div>
     }
     
