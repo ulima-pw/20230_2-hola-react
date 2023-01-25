@@ -1,9 +1,25 @@
+import { useState } from "react"
+
 // Componente React
 function ListaDiasSemana(props) {
-    if (props.modo === "lista") {
+    // Variable de estado
+    const [modoVisualizacion, setModoVisualizacion] = useState(props.modo)
+
+    const butOnClick = function() {
+        if (modoVisualizacion === "tabla") {
+            // cambiar a modo lista
+            setModoVisualizacion("lista")
+        }else {
+            // cambiar a modo tabla
+            setModoVisualizacion("tabla")
+        }
+    }
+
+
+    if (modoVisualizacion === "lista") {
         return <div className="card">
             <div className="card-body">
-                <h3>Dias Semana</h3>
+                <h3>Dias Semana <button onClick={ butOnClick } className="btn btn-primary" type="button">Cambiar</button> </h3>
                 <ul className="list-group">
                     {
                         props.lista.map(function(dia) {
@@ -16,10 +32,10 @@ function ListaDiasSemana(props) {
                 </ul>
             </div>
         </div>
-    }else if (props.modo === "tabla") {
+    }else if (modoVisualizacion === "tabla") {
         return <div className="card">
             <div className="card-body">
-                <h3>Dias Semana</h3>
+                <h3>Dias Semana <button onClick={ butOnClick } className="btn btn-primary" type="button">Cambiar</button></h3>
                 <table className="table table-hover">
                     <thead>
                         <tr>

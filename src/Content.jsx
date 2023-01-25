@@ -8,7 +8,7 @@ function Content(props) {
             <p>Hola { props.nombre }</p>
             <ListaDiasSemana 
                 lista={ listaDias }
-                modo={ "tabla" }/>
+                modo={ "lista" }/>
         </div>
     } else {
         return <div>
