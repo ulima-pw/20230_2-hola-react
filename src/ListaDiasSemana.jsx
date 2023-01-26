@@ -54,10 +54,6 @@ function ListaDiasSemana(props) {
             <ListaDias modo={ modoVisualizacion } lista={ props.lista }/>
         </div>
     </div>   
-
-
-    
-    
 }
 
 export default ListaDiasSemana
