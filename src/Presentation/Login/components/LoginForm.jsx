@@ -1,12 +1,13 @@
 import { useState } from "react"
 
-function LoginForm() {
+function LoginForm(props) {
     const [usuario, setUsuario] = useState("")
     const [password, setPassword] = useState("")
 
     const butOnClick = function() {
         console.log("USuario:", usuario)
         console.log("Password:", password)
+        props.onLoginOk(usuario, password)
     }
 
     return <form>
