@@ -10,7 +10,11 @@ function LoginPage() {
     ) {
         if (usuario === "pw" 
             && password === "123") {
-            navigate("/main")
+            navigate("/main", {
+                state : {
+                    username : usuario
+                }
+            })
         }
     }
 
