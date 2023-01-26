@@ -1,12 +1,22 @@
-import { useLocation } from "react-router-dom"
+import { useEffect } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 
 function MainPage() {
     const location = useLocation()
-    console.log(location)
 
-    const username = location.state.username
+    const navigate = useNavigate()
 
-    return <div>Main Page: { username }</div>
+    // Funcion que se renderizara solo la primera vez
+    useEffect(function() {
+        if (location.state == null) {
+            navigate("/")
+        }
+    }, [])
+
+    return location.state !== null 
+        ? <div>Main Page: { location.state.username }</div>
+        : <div></div>
+
 }
 
 export default MainPage

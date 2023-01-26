@@ -10,6 +10,20 @@ function LoginPage() {
     ) {
         if (usuario === "pw" 
             && password === "123") {
+
+            const dataUsuario = {
+                username : usuario,
+                password : password
+            }
+
+            // JSON.stringify : convierte objetos js a JSON (string)
+            const dataUsuarioJSON = JSON.stringify(dataUsuario)
+            console.log(dataUsuario)
+            console.log(dataUsuarioJSON)
+            // Guardado en session storage
+            sessionStorage.setItem("DATA_USUARIO", dataUsuarioJSON)
+
+
             navigate("/main", {
                 state : {
                     username : usuario
