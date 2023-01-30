@@ -13,6 +13,11 @@ function MainPage() {
             id : 2,
             nombre : "Gato con Botas",
             url : "https://www.universalpictures-latam.com/tl_files/content/movies/puss_in_boots_2/posters/01.jpg"
+        },
+        {
+            id : 3,
+            nombre : "El viaje de chihiro",
+            url : "https://es.web.img2.acsta.net/pictures/21/05/11/13/47/5979708.jpg"
         }
     ]
 
