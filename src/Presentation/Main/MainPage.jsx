@@ -1,38 +1,52 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import Filtro from "./components/Filtro"
 import ListaPeliculas from "./components/ListaPeliculas"
 
 function MainPage() {
-    /* const listaPeliculas = [
-        {
-            id : 1,
-            nombre : "Avatar 2",
-            url : "https://es.web.img3.acsta.net/pictures/22/11/02/15/37/0544148.jpg"
-        },
-        {
-            id : 2,
-            nombre : "Gato con Botas",
-            url : "https://www.universalpictures-latam.com/tl_files/content/movies/puss_in_boots_2/posters/01.jpg"
-        },
-        {
-            id : 3,
-            nombre : "El viaje de chihiro",
-            url : "https://es.web.img2.acsta.net/pictures/21/05/11/13/47/5979708.jpg"
-        }
-    ] */
+    // Variable de estado
+    const [listaPeliculas, setListaPeliculas] = useState([])
+    const [listaCategorias, setListaCategorias] = useState([])
 
-    const obtenerPeliculas = function() {
+    const obtenerPeliculasAsyncAwait = async function() {
+        try {
+            const response = await fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
+            const data = await response.json()
+            console.log("Respuesta del servidor:", data)
+            setListaPeliculas(data)
+        }catch(error) {
+            console.error("Error de comunicacion")
+        }
+        
+    }
+
+    const obtenerCategoriasAsyncAwait = async function() {
+        try {
+            const response = await fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=categorias")
+            const data = await response.json()
+            setListaCategorias(data)
+        }catch(error) {
+            console.error("Error obteniendo categorias")
+        }
+    }
+
+    /*const obtenerPeliculas = function() {
         const promesa = fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
         
         promesa.then(function (response) {
-            console.log("Respuesta del servidor")
+            const promesaResponse = response.json()
+            promesaResponse.then((data) => {
+                console.log("Respuesta del servidor:", data)
+            })
+        })
+
+        promesa.catch(function(err) {
+            // Funcion a ejecutar cuando haya un error
+            console.error("Error de comunicacion")
         })
 
         console.log("Fin de funcion obtenerPeliculas")
-    }
-
-    obtenerPeliculas()
-
+    }*/
 
     const location = useLocation()
 
@@ -42,12 +56,18 @@ function MainPage() {
     useEffect(function() {
         if (location.state == null) {
             navigate("/")
+        }else {
+            obtenerCategoriasAsyncAwait()
+            obtenerPeliculasAsyncAwait()
         }
     }, [])
 
     return location.state !== null 
-        ? <ListaPeliculas 
-            peliculas={ [] } />
+        ? <div className="container">
+            <Filtro categorias={ listaCategorias } />
+            <ListaPeliculas 
+                peliculas={ listaPeliculas } />
+        </div>
         : <div></div>
 
 }

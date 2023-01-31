@@ -8,13 +8,13 @@ function ListaPeliculas(props) {
         if (index % 2 === 0) {
             listaCols.push(
                 <div className="col-md-6">
-                    <CardPelicula pelicula={ pelicula }/>
+                    <CardPelicula key={ pelicula.id } pelicula={ pelicula }/>
                 </div>
             )
         } else {
             listaCols.push(
                 <div className="col-md-6">
-                    <CardPelicula pelicula={ pelicula } />
+                    <CardPelicula key={ pelicula.id } pelicula={ pelicula } />
                 </div>
             )
             listaRows.push(
@@ -30,7 +30,8 @@ function ListaPeliculas(props) {
         listaCols = []
         listaCols.push(
             <div className="col-md-6">
-                <CardPelicula pelicula={ props.peliculas[props.peliculas.length - 1] }/>
+                <CardPelicula key={ props.peliculas[props.peliculas.length - 1].id } 
+                    pelicula={ props.peliculas[props.peliculas.length - 1] }/>
             </div>
         )
         listaRows.push(
