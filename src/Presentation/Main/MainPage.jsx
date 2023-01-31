@@ -30,6 +30,22 @@ function MainPage() {
         }
     }
 
+    const filtrarPelicula = async function (categoriaId) {
+        try {
+            const response = await fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
+            const data = await response.json()
+            const listaPeliculasFiltrada = data.filter(function(pelicula) {
+                return pelicula.categoria == categoriaId
+            })
+    
+            setListaPeliculas(listaPeliculasFiltrada)
+        }catch(error) {
+            console.error("Error de comunicacion")
+        }
+        
+        
+    }
+
     /*const obtenerPeliculas = function() {
         const promesa = fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
         
@@ -64,7 +80,9 @@ function MainPage() {
 
     return location.state !== null 
         ? <div className="container">
-            <Filtro categorias={ listaCategorias } />
+            <Filtro 
+                categorias={ listaCategorias }
+                onFiltrar={ filtrarPelicula } />
             <ListaPeliculas 
                 peliculas={ listaPeliculas } />
         </div>

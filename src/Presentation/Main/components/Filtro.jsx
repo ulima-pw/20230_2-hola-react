@@ -1,7 +1,10 @@
 function Filtro(props) {
     return <div className="mt-4 mb-4">
         <label className="form-label">Categoría</label>
-        <select className="form-select">
+        <select className="form-select"
+            onChange={ function(evt) { 
+                props.onFiltrar(evt.target.value)
+            }}>
             {
                 props.categorias.map(function(cat){
                     return <option value={ cat.id }>
