@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import ListaPeliculas from "./components/ListaPeliculas"
 
 function MainPage() {
-    const listaPeliculas = [
+    /* const listaPeliculas = [
         {
             id : 1,
             nombre : "Avatar 2",
@@ -19,7 +19,20 @@ function MainPage() {
             nombre : "El viaje de chihiro",
             url : "https://es.web.img2.acsta.net/pictures/21/05/11/13/47/5979708.jpg"
         }
-    ]
+    ] */
+
+    const obtenerPeliculas = function() {
+        const promesa = fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
+        
+        promesa.then(function (response) {
+            console.log("Respuesta del servidor")
+        })
+
+        console.log("Fin de funcion obtenerPeliculas")
+    }
+
+    obtenerPeliculas()
+
 
     const location = useLocation()
 
@@ -34,7 +47,7 @@ function MainPage() {
 
     return location.state !== null 
         ? <ListaPeliculas 
-            peliculas={ listaPeliculas } />
+            peliculas={ [] } />
         : <div></div>
 
 }
