@@ -5,6 +5,7 @@ function Filtro(props) {
             onChange={ function(evt) { 
                 props.onFiltrar(evt.target.value)
             }}>
+            <option value={-1}>Todas</option>
             {
                 props.categorias.map(function(cat){
                     return <option value={ cat.id }>

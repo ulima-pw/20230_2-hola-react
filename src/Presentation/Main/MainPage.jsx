@@ -8,18 +8,6 @@ function MainPage() {
     const [listaPeliculas, setListaPeliculas] = useState([])
     const [listaCategorias, setListaCategorias] = useState([])
 
-    const obtenerPeliculasAsyncAwait = async function() {
-        try {
-            const response = await fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
-            const data = await response.json()
-            console.log("Respuesta del servidor:", data)
-            setListaPeliculas(data)
-        }catch(error) {
-            console.error("Error de comunicacion")
-        }
-        
-    }
-
     const obtenerCategoriasAsyncAwait = async function() {
         try {
             const response = await fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=categorias")
@@ -34,35 +22,19 @@ function MainPage() {
         try {
             const response = await fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
             const data = await response.json()
-            const listaPeliculasFiltrada = data.filter(function(pelicula) {
-                return pelicula.categoria == categoriaId
-            })
+
+            let peliculas = data;
+            if (categoriaId != -1) {
+                peliculas = data.filter(function(pelicula) {
+                    return pelicula.categoria == categoriaId
+                })
+            }
     
-            setListaPeliculas(listaPeliculasFiltrada)
+            setListaPeliculas(peliculas)
         }catch(error) {
             console.error("Error de comunicacion")
         }
-        
-        
     }
-
-    /*const obtenerPeliculas = function() {
-        const promesa = fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
-        
-        promesa.then(function (response) {
-            const promesaResponse = response.json()
-            promesaResponse.then((data) => {
-                console.log("Respuesta del servidor:", data)
-            })
-        })
-
-        promesa.catch(function(err) {
-            // Funcion a ejecutar cuando haya un error
-            console.error("Error de comunicacion")
-        })
-
-        console.log("Fin de funcion obtenerPeliculas")
-    }*/
 
     const location = useLocation()
 
@@ -74,7 +46,7 @@ function MainPage() {
             navigate("/")
         }else {
             obtenerCategoriasAsyncAwait()
-            obtenerPeliculasAsyncAwait()
+            filtrarPelicula(-1)
         }
     }, [])
 
