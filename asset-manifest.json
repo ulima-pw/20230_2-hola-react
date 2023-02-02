@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/20230_2-hola-react/static/css/main.c2cab247.css",
-    "main.js": "/20230_2-hola-react/static/js/main.0ee7a355.js",
+    "main.js": "/20230_2-hola-react/static/js/main.cf1e16d6.js",
     "index.html": "/20230_2-hola-react/index.html",
     "main.c2cab247.css.map": "/20230_2-hola-react/static/css/main.c2cab247.css.map",
-    "main.0ee7a355.js.map": "/20230_2-hola-react/static/js/main.0ee7a355.js.map"
+    "main.cf1e16d6.js.map": "/20230_2-hola-react/static/js/main.cf1e16d6.js.map"
   },
   "entrypoints": [
     "static/css/main.c2cab247.css",
-    "static/js/main.0ee7a355.js"
+    "static/js/main.cf1e16d6.js"
   ]
 }
