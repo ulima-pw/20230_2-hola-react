@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/20230_2-hola-react/static/css/main.c2cab247.css",
+    "main.js": "/20230_2-hola-react/static/js/main.cf4ea320.js",
+    "index.html": "/20230_2-hola-react/index.html",
+    "main.c2cab247.css.map": "/20230_2-hola-react/static/css/main.c2cab247.css.map",
+    "main.cf4ea320.js.map": "/20230_2-hola-react/static/js/main.cf4ea320.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2cab247.css",
+    "static/js/main.cf4ea320.js"
+  ]
+}
