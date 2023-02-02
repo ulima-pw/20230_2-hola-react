@@ -24,7 +24,7 @@ function LoginPage() {
             sessionStorage.setItem("DATA_USUARIO", dataUsuarioJSON)
 
 
-            navigate("/main", {
+            navigate("/20230_2-hola-react/main", {
                 state : {
                     username : usuario
                 }
