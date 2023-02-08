@@ -20,17 +20,17 @@ function MainPage() {
 
     const filtrarPelicula = async function (categoriaId) {
         try {
-            const response = await fetch("https://script.google.com/a/macros/ulima.edu.pe/s/AKfycbzRqLpRf7PXLuNQrgTKSTer6-Zt0dfmPmdDh-WmEr_dEm34Eh4qsfhMOADDoWgNKzdd/exec?entity=peliculas")
+            const response = await fetch(
+                `http://localhost:8000/endpoints/peliculas/listar?categoria=${ categoriaId }`
+            )
             const data = await response.json()
-
-            let peliculas = data;
-            if (categoriaId != -1) {
-                peliculas = data.filter(function(pelicula) {
-                    return pelicula.categoria == categoriaId
-                })
-            }
     
-            setListaPeliculas(peliculas)
+            if (data.error === "") {
+                setListaPeliculas(data.peliculas)
+            }else {
+                console.error(data.error)
+            }
+            
         }catch(error) {
             console.error("Error de comunicacion")
         }
