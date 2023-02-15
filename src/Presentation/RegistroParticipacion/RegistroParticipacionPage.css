@@ -1,0 +1,6 @@
+.boton:hover {
+    cursor: pointer;
+}
+.boton:active {
+    background-color: gray;
+}
